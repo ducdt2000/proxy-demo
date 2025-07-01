@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  squid:
+    image: ubuntu/squid:5.7-23.04_beta
+    ports:
+      - "3128:3128"
+    volumes:
+      - ./squid.conf:/etc/squid/squid.conf
+    container_name: squid-proxy
+    depends_on:
+      - icap-server
+
+  icap-server:
+    build: ./icap
+    container_name: icap-server
+    expose:
+      - "1344"
+
+  mock-http-server:
+    build: ./mock_http_server
+    container_name: mock-http-server
+    expose:
+      - "8000" 
