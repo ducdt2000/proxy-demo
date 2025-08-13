@@ -7,7 +7,7 @@
 set -e
 
 echo "=> Forcibly rebuilding Python services..."
-docker-compose build --no-cache icap-server mock-http-server
+docker-compose build --no-cache icap-server icap-server2 mock-http-server
 
 echo "=> Starting all services..."
 # The '--remove-orphans' flag removes containers for services that are no longer defined in the docker-compose file.

@@ -9,10 +9,17 @@ services:
     container_name: squid-proxy
     depends_on:
       - icap-server
+      - icap-server2
 
   icap-server:
     build: ./icap
     container_name: icap-server
+    expose:
+      - "1344"
+
+  icap-server2:
+    build: ./icap
+    container_name: icap-server2
     expose:
       - "1344"
 
